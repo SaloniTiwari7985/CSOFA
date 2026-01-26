@@ -1,0 +1,1954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSafe - Online Safety Education</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary-color: #1a73e8;
+            --primary-dark: #0d47a1;
+            --secondary-color: #34a853;
+            --secondary-dark: #2e7d32;
+            --warning-color: #fbbc04;
+            --danger-color: #ea4335;
+            --light-color: #f8f9fa;
+            --dark-color: #202124;
+            --gray-color: #5f6368;
+            --light-gray: #dadce0;
+            --border-radius: 12px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f5f7fa;
+            padding-bottom: 40px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            color: var(--primary-color);
+            font-size: 28px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .logo-text span {
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            font-size: 16px;
+            padding: 8px 12px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        nav a:hover, nav a.active {
+            background-color: rgba(26, 115, 232, 0.1);
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f1f8e9 100%);
+            padding: 80px 0;
+            margin-bottom: 60px;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--secondary-color);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--gray-color);
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 30px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(26, 115, 232, 0.25);
+        }
+
+        .hero-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Section Common Styles */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--gray-color);
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Info Grid for Cybersecurity Topics */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .info-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .info-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .info-content {
+            padding: 25px;
+        }
+
+        .info-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-icon {
+            font-size: 24px;
+        }
+
+        .info-content p {
+            color: var(--gray-color);
+            margin-bottom: 20px;
+        }
+
+        .info-list {
+            list-style-type: none;
+            margin-bottom: 20px;
+        }
+
+        .info-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--light-gray);
+            color: var(--gray-color);
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-list li i {
+            color: var(--secondary-color);
+            margin-right: 10px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--box-shadow);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-text {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* Visual Comparison Section */
+        .comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .comparison-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+        }
+
+        .comparison-img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+
+        .comparison-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        .safe-card {
+            border-top: 5px solid var(--secondary-color);
+        }
+
+        .unsafe-card {
+            border-top: 5px solid var(--danger-color);
+        }
+
+        /* Tips Section */
+        .tips-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 40px;
+        }
+
+        .tips-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 20px;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            background-color: transparent;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--gray-color);
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .tab-btn:hover:not(.active) {
+            background-color: rgba(26, 115, 232, 0.1);
+            color: var(--primary-color);
+        }
+
+        .tip-content {
+            display: none;
+        }
+
+        .tip-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .dos-donts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .do-column, .dont-column {
+            padding: 25px;
+            border-radius: var(--border-radius);
+        }
+
+        .do-column {
+            background-color: rgba(52, 168, 83, 0.08);
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .dont-column {
+            background-color: rgba(234, 67, 53, 0.08);
+            border-left: 5px solid var(--danger-color);
+        }
+
+        .column-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .do-column .column-title {
+            color: var(--secondary-dark);
+        }
+
+        .dont-column .column-title {
+            color: var(--danger-color);
+        }
+
+        .do-column li, .dont-column li {
+            margin-bottom: 15px;
+            padding-left: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        /* Quiz Section */
+        .quiz-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 40px;
+        }
+
+        .quiz-progress {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            position: relative;
+        }
+
+        .progress-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 60%;
+            width: 80%;
+            height: 3px;
+            background-color: var(--light-gray);
+            z-index: 1;
+        }
+
+        .progress-step.active:not(:last-child)::after {
+            background-color: var(--primary-color);
+        }
+
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-bottom: 10px;
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        .progress-step.active .step-circle {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .quiz-content {
+            min-height: 300px;
+        }
+
+        .quiz-question {
+            font-size: 22px;
+            margin-bottom: 30px;
+            color: var(--primary-dark);
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .quiz-option {
+            padding: 18px 20px;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(26, 115, 232, 0.05);
+        }
+
+        .quiz-option.selected {
+            border-color: var(--primary-color);
+            background-color: rgba(26, 115, 232, 0.1);
+        }
+
+        .quiz-option.correct {
+            border-color: var(--secondary-color);
+            background-color: rgba(52, 168, 83, 0.1);
+        }
+
+        .quiz-option.incorrect {
+            border-color: var(--danger-color);
+            background-color: rgba(234, 67, 53, 0.1);
+        }
+
+        .option-letter {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .quiz-option.selected .option-letter {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .quiz-option.correct .option-letter {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .quiz-option.incorrect .option-letter {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        .quiz-explanation {
+            padding: 20px;
+            background-color: rgba(26, 115, 232, 0.05);
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+            display: none;
+        }
+
+        .quiz-explanation.show {
+            display: block;
+        }
+
+        .quiz-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .quiz-btn {
+            padding: 12px 30px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 16px;
+        }
+
+        .quiz-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .next-btn {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .next-btn:hover:not(:disabled) {
+            background-color: var(--primary-dark);
+        }
+
+        .restart-btn {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .restart-btn:hover {
+            background-color: var(--secondary-dark);
+        }
+
+        .quiz-results {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+
+        .quiz-results.show {
+            display: block;
+        }
+
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-weight: 700;
+            font-size: 42px;
+        }
+
+        .score-circle span {
+            font-size: 18px;
+            font-weight: 400;
+        }
+
+        /* Scenarios Section */
+        .scenarios-container {
+            display: grid;
+            gap: 30px;
+        }
+
+        .scenario-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .scenario-content {
+            flex: 1;
+        }
+
+        .scenario-visual {
+            text-align: center;
+        }
+
+        .scenario-img {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .scenario-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .scenario-icon {
+            font-size: 32px;
+            color: var(--warning-color);
+        }
+
+        .scenario-question {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .scenario-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .scenario-action {
+            padding: 15px 25px;
+            background-color: rgba(26, 115, 232, 0.1);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-weight: 500;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .scenario-action:hover {
+            background-color: rgba(26, 115, 232, 0.2);
+        }
+
+        .scenario-action.selected {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .scenario-solution {
+            padding: 20px;
+            background-color: rgba(52, 168, 83, 0.08);
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+            display: none;
+        }
+
+        .scenario-solution.show {
+            display: block;
+        }
+
+        /* Resources Section */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .resource-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .resource-icon {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .resource-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        .resource-card p {
+            color: var(--gray-color);
+            margin-bottom: 20px;
+        }
+
+        .resource-link {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .resource-link:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-section p {
+            color: #bdc1c6;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #bdc1c6;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #3c4043;
+            color: #9aa0a6;
+            font-size: 14px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .scenario-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                border-radius: 0 0 var(--border-radius) var(--border-radius);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .tips-tabs {
+                justify-content: center;
+            }
+            
+            .quiz-container, .tips-container, .info-card {
+                padding: 25px;
+            }
+            
+            .progress-step:not(:last-child)::after {
+                width: 70%;
+                left: 65%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .cta-button {
+                padding: 12px 24px;
+                font-size: 16px;
+            }
+            
+            .info-card, .quiz-container, .tips-container {
+                padding: 20px;
+            }
+            
+            .dos-donts {
+                grid-template-columns: 1fr;
+            }
+            
+            .quiz-option {
+                padding: 15px;
+            }
+            
+            .scenario-action {
+                min-width: 100%;
+            }
+            
+            .stat-number {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <a href="#home" class="logo">
+                <i class="fas fa-shield-alt logo-icon"></i>
+                <div class="logo-text">Cyber<span>Safe</span></div>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#cybersecurity">Cybersecurity</a></li>
+                    <li><a href="#fraud">Online Fraud</a></li>
+                    <li><a href="#tips">Safety Tips</a></li>
+                    <li><a href="#quiz">Quiz</a></li>
+                    <li><a href="#scenarios">Scenarios</a></li>
+                    <li><a href="Community">Community</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Stay Safe Online with <span>CyberSafe</span></h1>
+                <p>Learn how to protect yourself from cyber threats and online fraud in simple, non-technical language. Perfect for students, teenagers, and all internet users.</p>
+                <p><strong>Every 39 seconds, a hacker attack occurs somewhere on the internet.</strong> Are you prepared?</p>
+                <a href="#cybersecurity" class="cta-button">Start Learning Now</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cybersecurity Protection" class="hero-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Cybersecurity Section -->
+    <section id="cybersecurity">
+        <div class="container">
+            <div class="section-title">
+                <h2>Understanding Cybersecurity</h2>
+                <p>Learn the essentials of protecting yourself in the digital world</p>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cybersecurity Concept" class="info-img">
+                    <div class="info-content">
+                        <h3><i class="fas fa-lock info-icon"></i> What is Cybersecurity?</h3>
+                        <p>Cybersecurity is the practice of protecting computers, servers, mobile devices, electronic systems, networks, and data from malicious attacks, damage, or unauthorized access.</p>
+                        <ul class="info-list">
+                            <li><i class="fas fa-check"></i> Protects your personal information</li>
+                            <li><i class="fas fa-check"></i> Prevents identity theft and financial loss</li>
+                            <li><i class="fas fa-check"></i> Keeps your devices safe from malware</li>
+                            <li><i class="fas fa-check"></i> Safeguards national security infrastructure</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Common Cyber Threats" class="info-img">
+                    <div class="info-content">
+                        <h3><i class="fas fa-exclamation-triangle info-icon"></i> Common Threats</h3>
+                        <p>Understanding different types of cyber threats is the first step in protecting yourself online.</p>
+                        <ul class="info-list">
+                            <li><i class="fas fa-virus"></i> <strong>Malware:</strong> Malicious software like viruses, worms, and ransomware</li>
+                            <li><i class="fas fa-fish"></i> <strong>Phishing:</strong> Fake emails/messages tricking you to reveal information</li>
+                            <li><i class="fas fa-user-secret"></i> <strong>Social Engineering:</strong> Manipulating people to give up confidential info</li>
+                            <li><i class="fas fa-wifi"></i> <strong>Man-in-the-Middle:</strong> Hackers intercepting communications</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">91%</div>
+                    <div class="stat-text">of cyber attacks start with a phishing email</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">$4.35M</div>
+                    <div class="stat-text">Average cost of a data breach in 2022</div>
+                </div>
+            </div>
+            
+            <div class="comparison">
+                <div class="comparison-card safe-card">
+                    <img src="https://images.unsplash.com/photo-1589578228447-e1a4e481c6c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Secure Practices" class="comparison-img">
+                    <h3>Secure Practices</h3>
+                    <p>• Use strong, unique passwords</p>
+                    <p>• Enable two-factor authentication</p>
+                    <p>• Keep software updated</p>
+                    <p>• Use secure Wi-Fi connections</p>
+                </div>
+                
+                <div class="comparison-card unsafe-card">
+                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Risky Behaviors" class="comparison-img">
+                    <h3>Risky Behaviors</h3>
+                    <p>• Using public Wi-Fi for banking</p>
+                    <p>• Clicking suspicious links</p>
+                    <p>• Sharing passwords</p>
+                    <p>• Ignoring software updates</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Online Fraud Section -->
+    <section id="fraud" style="background-color: #f0f7ff;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Online Fraud Awareness</h2>
+                <p>Recognize and protect yourself from common online scams</p>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Phishing Scam" class="info-img">
+                    <div class="info-content">
+                        <h3><i class="fas fa-fish info-icon"></i> Phishing Scams</h3>
+                        <p>Phishing is a cybercrime where targets are contacted by email, telephone, or text message by someone posing as a legitimate institution to lure individuals into providing sensitive data.</p>
+                        <ul class="info-list">
+                            <li><i class="fas fa-envelope"></i> Fake emails from "banks" or "government agencies"</li>
+                            <li><i class="fas fa-link"></i> Links to fake login pages that steal credentials</li>
+                            <li><i class="fas fa-exclamation-circle"></i> Urgent messages requiring immediate action</li>
+                            <li><i class="fas fa-download"></i> Malicious attachments disguised as invoices or documents</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <img src="https://images.unsplash.com/photo-1596524430615-b46475ddff6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Shopping Scams" class="info-img">
+                    <div class="info-content">
+                        <h3><i class="fas fa-shopping-cart info-icon"></i> Online Shopping Scams</h3>
+                        <p>Fake online stores or sellers that take your money but never deliver the products, or deliver counterfeit items.</p>
+                        <ul class="info-list">
+                            <li><i class="fas fa-tag"></i> Prices that seem too good to be true</li>
+                            <li><i class="fas fa-credit-card"></i> Requests for unusual payment methods (gift cards, wire transfers)</li>
+                            <li><i class="fas fa-globe"></i> Websites without proper contact information</li>
+                            <li><i class="fas fa-lock"></i> Lack of secure payment options (no "https://")</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Romance Scams" class="info-img">
+                    <div class="info-content">
+                        <h3><i class="fas fa-heart info-icon"></i> Romance Scams</h3>
+                        <p>Scammers create fake profiles on dating sites or social media to form relationships, then ask for money for emergencies, travel, or medical expenses.</p>
+                        <ul class="info-list">
+                            <li><i class="fas fa-user"></i> Quickly professing love or strong feelings</li>
+                            <li><i class="fas fa-camera"></i> Avoiding video calls or in-person meetings</li>
+                            <li><i class="fas fa-money-bill-wave"></i> Asking for money for emergencies or travel</li>
+                            <li><i class="fas fa-gift"></i> Requesting gift cards or wire transfers</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tech Support Scams" class="info-img">
+                    <div class="info-content">
+                        <h3><i class="fas fa-desktop info-icon"></i> Tech Support Scams</h3>
+                        <p>Scammers pretend to be from legitimate tech companies and claim your computer has a virus or problem, then charge for unnecessary services or install malware.</p>
+                        <ul class="info-list">
+                            <li><i class="fas fa-phone"></i> Unsolicited calls about computer problems</li>
+                            <li><i class="fas fa-exclamation-triangle"></i> Pop-up warnings with phone numbers to call</li>
+                            <li><i class="fas fa-download"></i> Requests to download remote access software</li>
+                            <li><i class="fas fa-credit-card"></i> Demands for payment for "fixing" non-existent problems</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stat-card" style="margin: 30px auto; max-width: 600px;">
+                <div class="stat-number">1 in 3</div>
+                <div class="stat-text">people have been victims of online fraud or know someone who has</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety Tips Section -->
+    <section id="tips">
+        <div class="container">
+            <div class="section-title">
+                <h2>Online Safety Tips</h2>
+                <p>Practical do's and don'ts to keep yourself safe online</p>
+            </div>
+            
+            <div class="tips-container">
+                <div class="tips-tabs">
+                    <button class="tab-btn active" data-tab="passwords">Password Safety</button>
+                    <button class="tab-btn" data-tab="social">Social Media</button>
+                    <button class="tab-btn" data-tab="email">Email Safety</button>
+                    <button class="tab-btn" data-tab="shopping">Online Shopping</button>
+                </div>
+                
+                <div class="tip-content active" id="passwords-tab">
+                    <div class="dos-donts">
+                        <div class="do-column">
+                            <div class="column-title">
+                                <i class="fas fa-check-circle"></i>
+                                <span>DO - Password Best Practices</span>
+                            </div>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Use passwords with at least 12 characters including uppercase, lowercase, numbers, and symbols</li>
+                                <li><i class="fas fa-check"></i> Create unique passwords for each important account (email, banking, social media)</li>
+                                <li><i class="fas fa-check"></i> Enable two-factor authentication (2FA) whenever available</li>
+                                <li><i class="fas fa-check"></i> Use a reputable password manager to generate and store passwords</li>
+                                <li><i class="fas fa-check"></i> Change passwords immediately if a service you use has a data breach</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="dont-column">
+                            <div class="column-title">
+                                <i class="fas fa-times-circle"></i>
+                                <span>DON'T - Password Mistakes</span>
+                            </div>
+                            <ul>
+                                <li><i class="fas fa-times"></i> Use personal information (names, birthdays, pet names)</li>
+                                <li><i class="fas fa-times"></i> Use common sequences like "123456" or "password"</li>
+                                <li><i class="fas fa-times"></i> Reuse the same password across multiple sites</li>
+                                <li><i class="fas fa-times"></i> Write passwords on sticky notes or share them with others</li>
+                                <li><i class="fas fa-times"></i> Use dictionary words without modifications</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tip-content" id="social-tab">
+                    <div class="dos-donts">
+                        <div class="do-column">
+                            <div class="column-title">
+                                <i class="fas fa-check-circle"></i>
+                                <span>DO - Social Media Safety</span>
+                            </div>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Review and adjust privacy settings for each platform regularly</li>
+                                <li><i class="fas fa-check"></i> Think before you post - assume anything you share could become public</li>
+                                <li><i class="fas fa-check"></i> Be selective about friend/follower requests (only accept people you know)</li>
+                                <li><i class="fas fa-check"></i> Report suspicious accounts, harassment, or inappropriate content</li>
+                                <li><i class="fas fa-check"></i> Use different passwords for each social media account</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="dont-column">
+                            <div class="column-title">
+                                <i class="fas fa-times-circle"></i>
+                                <span>DON'T - Social Media Risks</span>
+                            </div>
+                            <ul>
+                                <li><i class="fas fa-times"></i> Share personal information (address, phone number, school location)</li>
+                                <li><i class="fas fa-times"></i> Post vacation photos while you're still away (wait until you return)</li>
+                                <li><i class="fas fa-times"></i> Click on suspicious links even if they're from "friends"</li>
+                                <li><i class="fas fa-times"></i> Participate in viral quizzes that ask for personal information</li>
+                                <li><i class="fas fa-times"></i> Share inappropriate or sensitive content that could be used against you</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tip-content" id="email-tab">
+                    <div class="dos-donts">
+                        <div class="do-column">
+                            <div class="column-title">
+                                <i class="fas fa-check-circle"></i>
+                                <span>DO - Email Safety</span>
+                            </div>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Check sender email addresses carefully (look for misspellings)</li>
+                                <li><i class="fas fa-check"></i> Hover over links to see the actual URL before clicking</li>
+                                <li><i class="fas fa-check"></i> Look for spelling and grammar errors (common in phishing emails)</li>
+                                <li><i class="fas fa-check"></i> Use spam filters and report phishing emails to your provider</li>
+                                <li><i class="fas fa-check"></i> Verify unexpected attachments with the sender before opening</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="dont-column">
+                            <div class="column-title">
+                                <i class="fas fa-times-circle"></i>
+                                <span>DON'T - Email Dangers</span>
+                            </div>
+                            <ul>
+                                <li><i class="fas fa-times"></i> Open attachments from unknown senders (could contain malware)</li>
+                                <li><i class="fas fa-times"></i> Click on links in unexpected emails asking for personal information</li>
+                                <li><i class="fas fa-times"></i> Reply to emails that create a sense of urgency or fear</li>
+                                <li><i class="fas fa-times"></i> Provide passwords, SSN, or financial details via email</li>
+                                <li><i class="fas fa-times"></i> Believe emails promising unexpected money or prizes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tip-content" id="shopping-tab">
+                    <div class="dos-donts">
+                        <div class="do-column">
+                            <div class="column-title">
+                                <i class="fas fa-check-circle"></i>
+                                <span>DO - Safe Online Shopping</span>
+                            </div>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Shop only on secure websites (look for "https://" and padlock icon)</li>
+                                <li><i class="fas fa-check"></i> Research sellers before making purchases (check reviews)</li>
+                                <li><i class="fas fa-check"></i> Use credit cards instead of debit cards for better fraud protection</li>
+                                <li><i class="fas fa-check"></i> Keep records of purchases and confirmations</li>
+                                <li><i class="fas fa-check"></i> Use strong passwords for shopping accounts</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="dont-column">
+                            <div class="column-title">
+                                <i class="fas fa-times-circle"></i>
+                                <span>DON'T - Shopping Scams</span>
+                            </div>
+                            <ul>
+                                <li><i class="fas fa-times"></i> Shop on public Wi-Fi networks (use cellular data or VPN)</li>
+                                <li><i class="fas fa-times"></i> Believe prices that are too good to be true</li>
+                                <li><i class="fas fa-times"></i> Use payment methods that don't offer fraud protection</li>
+                                <li><i class="fas fa-times"></i> Shop on sites with no contact information or physical address</li>
+                                <li><i class="fas fa-times"></i> Save payment information on shopping sites</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz">
+        <div class="container">
+            <div class="section-title">
+                <h2>Test Your Cybersecurity Knowledge</h2>
+                <p>Take this short quiz to see how well you can identify online threats</p>
+            </div>
+            
+            <div class="quiz-container">
+                <div class="quiz-progress" id="quizProgress">
+                    <!-- Progress steps will be generated by JavaScript -->
+                </div>
+                
+                <div class="quiz-content">
+                    <div id="quizQuestionContainer">
+                        <!-- Quiz questions will be loaded here -->
+                    </div>
+                    
+                    <div class="quiz-explanation" id="quizExplanation">
+                        <!-- Explanation will be loaded here -->
+                    </div>
+                    
+                    <div class="quiz-navigation">
+                        <button class="quiz-btn restart-btn" id="restartQuizBtn">Restart Quiz</button>
+                        <button class="quiz-btn next-btn" id="nextQuestionBtn" disabled>Next Question</button>
+                    </div>
+                    
+                    <div class="quiz-results" id="quizResults">
+                        <!-- Results will be displayed here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scenarios Section -->
+    <section id="scenarios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Real-Life Scenarios</h2>
+                <p>Practice identifying safe responses to common online situations</p>
+            </div>
+            
+            <div class="scenarios-container">
+                <div class="scenario-card">
+                    <div class="scenario-content">
+                        <div class="scenario-header">
+                            <i class="fas fa-envelope scenario-icon"></i>
+                            <div class="scenario-question">You receive an email from your "bank" saying there's a problem with your account and you need to click a link to verify your information. The email looks legitimate with the bank's logo. What do you do?</div>
+                        </div>
+                        
+                        <div class="scenario-actions">
+                            <button class="scenario-action" data-scenario="1" data-option="1">Click the link and enter your information to fix the problem</button>
+                            <button class="scenario-action" data-scenario="1" data-option="2">Ignore the email - it's probably a scam</button>
+                            <button class="scenario-action" data-scenario="1" data-option="3">Contact your bank directly using the phone number on their official website</button>
+                        </div>
+                        
+                        <div class="scenario-solution" id="scenarioSolution1">
+                            <p><strong>Correct Approach:</strong> Option 3 - Contact your bank directly using the phone number on their official website.</p>
+                            <p><strong>Why:</strong> Banks never ask for sensitive information via email links. Phishing emails often look legitimate with correct logos but lead to fake websites designed to steal your login credentials. Always contact organizations directly through verified contact information from their official website or your account statements.</p>
+                        </div>
+                    </div>
+                    <div class="scenario-visual">
+                        <img src="https://images.unsplash.com/photo-1587560699334-cc4ff634909a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Phishing Email Example" class="scenario-img">
+                    </div>
+                </div>
+                
+                <div class="scenario-card">
+                    <div class="scenario-content">
+                        <div class="scenario-header">
+                            <i class="fas fa-gamepad scenario-icon"></i>
+                            <div class="scenario-question">You're playing an online game and someone offers you free in-game currency if you download and run a special program. They claim it's a "hack" that works. What do you do?</div>
+                        </div>
+                        
+                        <div class="scenario-actions">
+                            <button class="scenario-action" data-scenario="2" data-option="1">Download and run the program - free currency sounds great!</button>
+                            <button class="scenario-action" data-scenario="2" data-option="2">Ask for more details before deciding</button>
+                            <button class="scenario-action" data-scenario="2" data-option="3">Ignore the offer and report the user to game moderators</button>
+                        </div>
+                        
+                        <div class="scenario-solution" id="scenarioSolution2">
+                            <p><strong>Correct Approach:</strong> Option 3 - Ignore the offer and report the user to game moderators.</p>
+                            <p><strong>Why:</strong> Programs promising free in-game currency are often malware in disguise. They can steal your account information, install viruses, give hackers access to your device, or violate game terms resulting in account bans. Legitimate games don't require external programs for currency, and using hacks violates terms of service.</p>
+                        </div>
+                    </div>
+                    <div class="scenario-visual">
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Gaming Security" class="scenario-img">
+                    </div>
+                </div>
+                
+                <div class="scenario-card">
+                    <div class="scenario-content">
+                        <div class="scenario-header">
+                            <i class="fas fa-users scenario-icon"></i>
+                            <div class="scenario-question">A new person you met on social media asks for your phone number after just a few messages. They seem nice and have mutual friends. What do you do?</div>
+                        </div>
+                        
+                        <div class="scenario-actions">
+                            <button class="scenario-action" data-scenario="3" data-option="1">Give them your number - they seem trustworthy and have mutual friends</button>
+                            <button class="scenario-action" data-scenario="3" data-option="2">Ask why they need it first</button>
+                            <button class="scenario-action" data-scenario="3" data-option="3">Politely decline and continue chatting on the platform</button>
+                        </div>
+                        
+                        <div class="scenario-solution" id="scenarioSolution3">
+                            <p><strong>Correct Approach:</strong> Option 3 - Politely decline and continue chatting on the platform.</p>
+                            <p><strong>Why:</strong> Personal information like phone numbers can be used for harassment, identity theft, SIM swapping attacks, or social engineering. Even with mutual friends, it's safer to keep conversations within the platform until you've established genuine trust over time. If they're legitimate, they'll understand your privacy concerns.</p>
+                        </div>
+                    </div>
+                    <div class="scenario-visual">
+                        <img src="https://images.unsplash.com/photo-1611605698335-8b1569810432?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Social Media Safety" class="scenario-img">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Resources Section -->
+            <div class="section-title" style="margin-top: 60px;">
+                <h2>Additional Resources</h2>
+                <p>Learn more about cybersecurity and online safety</p>
+            </div>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <i class="fas fa-book resource-icon"></i>
+                    <h3>Learning Guides</h3>
+                    <p>Downloadable guides on password security, phishing identification, and online safety basics.</p>
+                    <a href="#" class="resource-link">Access Guides →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <i class="fas fa-video resource-icon"></i>
+                    <h3>Video Tutorials</h3>
+                    <p>Short videos explaining cybersecurity concepts in simple, easy-to-understand language.</p>
+                    <a href="#" class="resource-link">Watch Videos →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <i class="fas fa-download resource-icon"></i>
+                    <h3>Safety Checklists</h3>
+                    <p>Printable checklists for securing your devices, social media, and online accounts.</p>
+                    <a href="#" class="resource-link">Download Checklists →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <i class="fas fa-newspaper resource-icon"></i>
+                    <h3>Latest Threats</h3>
+                    <p>Stay updated on new cyber threats and scams circulating online.</p>
+                    <a href="#" class="resource-link">Read Updates →</a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Community Section - Photos & Videos -->
+<section id="community" style="background-color: #f8f9fa; padding: 60px 0;">
+    <div class="container">
+        <div class="section-title">
+            <h2>Community</h2>
+            <p>Creating CyberSafe: Behind the Scenes</p>
+        </div>
+        
+        <!-- Photos Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px;">
+            <div>
+                <!--IMG 1 Path over here--><img src=""  
+                     alt="Coding the web app" 
+                     style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px;">
+                <p style="text-align: center; margin-top: 10px; color: #666;">Developing the interactive quiz system</p>
+            </div>
+            
+            <div>
+                <!--IMG 2 Path over here--><img src="" 
+                     alt="UI Design process" 
+                     style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px;">
+                <p style="text-align: center; margin-top: 10px; color: #666;">Designing the user interface</p>
+            </div>
+            
+            <div>
+                <!--IMG 3 Path over here--><img src="" 
+                     alt="Testing on mobile" 
+                     style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px;">
+                <p style="text-align: center; margin-top: 10px; color: #666;">Testing responsive design on mobile</p>
+            </div>
+        </div>
+        
+        <!-- Video Section -->
+        <div style="text-align: center; margin-top: 40px;">
+            <h3 style="margin-bottom: 20px; color: #333;">Watch the Making Of</h3>
+            <div style="margin-bottom: 30px;">
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; margin: 0 auto; max-width: 800px;">
+                    <video 
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 10px;"
+                        controls
+                        title="Video description for screen readers">
+                        <!--VIDEO Path over here--><source src="" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <p style="margin-top: 10px; color: #666;">Building the cybersecurity quiz feature</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CyberSafe</h3>
+                    <p>An educational awareness platform focused on cybersecurity and online fraud prevention for students, teenagers, and all internet users.</p>
+                    <p><strong>Remember:</strong> Your online safety is in your hands. Stay informed, stay vigilant, stay safe.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#cybersecurity">Cybersecurity Basics</a></li>
+                        <li><a href="#fraud">Online Fraud Types</a></li>
+                        <li><a href="#tips">Safety Tips</a></li>
+                        <li><a href="#quiz">Knowledge Quiz</a></li>
+                        <li><a href="#scenarios">Practice Scenarios</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Stay Safe Online</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://staysafeonline.org" target="_blank">Stay Safe Online</a></li>
+                        <li><a href="https://www.consumer.ftc.gov/features/scam-alerts" target="_blank">FTC Scam Alerts</a></li>
+                        <li><a href="https://www.cyber.gov.au" target="_blank">Australian Cyber Security</a></li>
+                        <li><a href="https://www.getsafeonline.org" target="_blank">Get Safe Online</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 CyberSafe. Designed for educational purposes. All images from Unsplash. No personal data is collected.</p>
+                <p>This website is part of a cybersecurity awareness initiative. Always verify information through official sources.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Quiz Data - Enhanced with more questions
+        const quizData = [
+            {
+                question: "What is the primary goal of phishing attacks?",
+                options: [
+                    "To improve your internet speed",
+                    "To steal personal information like passwords and credit card numbers",
+                    "To help you organize your emails",
+                    "To protect your computer from viruses"
+                ],
+                correct: 1,
+                explanation: "Phishing attacks aim to trick you into revealing sensitive personal information such as passwords, credit card numbers, or Social Security numbers by pretending to be a trustworthy entity."
+            },
+            {
+                question: "Which of these is the strongest and most secure password?",
+                options: [
+                    "password123",
+                    "john2005",
+                    "BlueHouse42!Spring",
+                    "12345678"
+                ],
+                correct: 2,
+                explanation: "BlueHouse42!Spring is the strongest because it's long (16+ characters), combines uppercase and lowercase letters, numbers, and symbols, and doesn't contain easily guessable personal information."
+            },
+            {
+                question: "You get a pop-up saying your computer is infected and you need to call a number for immediate help. What should you do?",
+                options: [
+                    "Call the number immediately to fix the problem",
+                    "Restart your computer",
+                    "Close the pop-up without clicking anything",
+                    "Download the software they recommend"
+                ],
+                correct: 2,
+                explanation: "This is a common tech support scam. Legitimate security software won't ask you to call a number through a pop-up. Close the pop-up (use Ctrl+Alt+Delete if needed) and run your own antivirus scan if you're concerned."
+            },
+            {
+                question: "What does the padlock icon next to a website URL indicate?",
+                options: [
+                    "The website has videos",
+                    "The connection is secure and encrypted",
+                    "The website is free to use",
+                    "The website will load faster"
+                ],
+                correct: 1,
+                explanation: "The padlock icon indicates a secure, encrypted HTTPS connection. This is especially important when entering personal or payment information on a website to prevent interception by third parties."
+            },
+            {
+                question: "A friend on social media sends you a link saying 'You have to see this funny video of you!' What should you do?",
+                options: [
+                    "Click the link immediately to see the video",
+                    "Ask your friend if they meant to send it",
+                    "Forward it to other friends first",
+                    "Check the URL before clicking and verify with your friend"
+                ],
+                correct: 3,
+                explanation: "Even from friends, suspicious links could mean their account is compromised. Check the URL for odd spellings or strange domains. Better yet, message your friend separately to ask if they sent it."
+            },
+            {
+                question: "Why should you avoid doing online banking on public Wi-Fi?",
+                options: [
+                    "Public Wi-Fi is always too slow for banking",
+                    "Others on the same network might intercept your sensitive data",
+                    "Banks block all public Wi-Fi connections",
+                    "It uses more of your phone's battery"
+                ],
+                correct: 1,
+                explanation: "Public Wi-Fi networks are often unsecured, meaning hackers on the same network could potentially intercept your banking information. Use cellular data or a VPN for sensitive transactions."
+            },
+            {
+                question: "What is two-factor authentication (2FA)?",
+                options: [
+                    "Using two different passwords for one account",
+                    "A second layer of security requiring both a password and a temporary code",
+                    "Having two separate user accounts for the same service",
+                    "Using both fingerprint and face recognition"
+                ],
+                correct: 1,
+                explanation: "Two-factor authentication adds an extra layer of security by requiring both something you know (password) and something you have (like a code sent to your phone or generated by an app)."
+            },
+            {
+                question: "You receive an email from a company you've never heard of saying you've won a prize. What should you do?",
+                options: [
+                    "Click the link to claim your prize",
+                    "Provide your address so they can send the prize",
+                    "Delete the email without responding",
+                    "Forward it to friends so they can enter too"
+                ],
+                correct: 2,
+                explanation: "Unsolicited prize notifications are almost always scams designed to get your personal information or money. Delete such emails without clicking any links or providing any information."
+            },
+            {
+                question: "What should you do before downloading software from the internet?",
+                options: [
+                    "Download immediately if it's free",
+                    "Check reviews and download from official sources only",
+                    "Download from any site that has the software",
+                    "Disable your antivirus first so it doesn't block the download"
+                ],
+                correct: 1,
+                explanation: "Always research software before downloading. Check reviews, download from official sources or trusted app stores, and never disable your security software to install unknown programs."
+            },
+            {
+                question: "How often should you update your software and apps?",
+                options: [
+                    "Only when they stop working",
+                    "Once a year",
+                    "As soon as updates are available",
+                    "Never - updates often break things"
+                ],
+                correct: 2,
+                explanation: "Update software as soon as updates are available. Updates often include critical security patches that fix vulnerabilities hackers could exploit. Enable automatic updates when possible."
+            }
+        ];
+
+        // App State
+        let currentQuestion = 0;
+        let userAnswers = [];
+        let score = 0;
+
+        // DOM Elements
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tipContents = document.querySelectorAll('.tip-content');
+        const quizProgress = document.getElementById('quizProgress');
+        const quizQuestionContainer = document.getElementById('quizQuestionContainer');
+        const quizExplanation = document.getElementById('quizExplanation');
+        const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+        const restartQuizBtn = document.getElementById('restartQuizBtn');
+        const quizResults = document.getElementById('quizResults');
+        const scenarioActions = document.querySelectorAll('.scenario-action');
+        const scenarioSolutions = document.querySelectorAll('.scenario-solution');
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+            initTabs();
+            initQuiz();
+            initScenarios();
+            initSmoothScrolling();
+            
+            // Preload images for better user experience
+            preloadImages();
+        });
+
+        // Mobile Navigation
+        function initNavigation() {
+            mobileMenuBtn.addEventListener('click', function() {
+                navMenu.classList.toggle('show');
+                mobileMenuBtn.innerHTML = navMenu.classList.contains('show') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
+
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('show');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    
+                    // Update active nav link
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    link.classList.add('active');
+                });
+            });
+        }
+
+        // Tab Switching for Safety Tips
+        function initTabs() {
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Update active tab button
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    tipContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === `${tabId}-tab`) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+        }
+
+        // Quiz Functionality
+        function initQuiz() {
+            // Generate progress steps
+            quizProgress.innerHTML = '';
+            quizData.forEach((_, index) => {
+                const step = document.createElement('div');
+                step.className = `progress-step ${index === 0 ? 'active' : ''}`;
+                step.innerHTML = `
+                    <div class="step-circle">${index + 1}</div>
+                    <div>Q${index + 1}</div>
+                `;
+                quizProgress.appendChild(step);
+            });
+
+            // Load first question
+            loadQuestion();
+
+            // Next question button
+            nextQuestionBtn.addEventListener('click', function() {
+                if (currentQuestion < quizData.length - 1) {
+                    currentQuestion++;
+                    loadQuestion();
+                    updateProgress();
+                } else {
+                    showResults();
+                }
+            });
+
+            // Restart quiz button
+            restartQuizBtn.addEventListener('click', restartQuiz);
+        }
+
+        function loadQuestion() {
+            const question = quizData[currentQuestion];
+            
+            // Update question text
+            quizQuestionContainer.innerHTML = `
+                <div class="quiz-question">${currentQuestion + 1}. ${question.question}</div>
+                <div class="quiz-options" id="quizOptions">
+                    ${question.options.map((option, index) => `
+                        <div class="quiz-option" data-index="${index}">
+                            <div class="option-letter">${String.fromCharCode(65 + index)}</div>
+                            <div class="option-text">${option}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            // Reset explanation and button state
+            quizExplanation.classList.remove('show');
+            quizExplanation.innerHTML = '';
+            nextQuestionBtn.disabled = true;
+            nextQuestionBtn.textContent = currentQuestion < quizData.length - 1 ? 'Next Question' : 'See Results';
+
+            // Add click event to options
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    if (this.classList.contains('selected')) return;
+                    
+                    const selectedIndex = parseInt(this.getAttribute('data-index'));
+                    
+                    // Remove selection from all options
+                    document.querySelectorAll('.quiz-option').forEach(opt => {
+                        opt.classList.remove('selected', 'correct', 'incorrect');
+                    });
+                    
+                    // Mark selected option
+                    this.classList.add('selected');
+                    
+                    // Check if correct
+                    const isCorrect = selectedIndex === question.correct;
+                    
+                    if (isCorrect) {
+                        this.classList.add('correct');
+                        userAnswers[currentQuestion] = { selected: selectedIndex, correct: true };
+                    } else {
+                        this.classList.add('incorrect');
+                        userAnswers[currentQuestion] = { selected: selectedIndex, correct: false };
+                        
+                        // Highlight correct answer
+                        document.querySelector(`.quiz-option[data-index="${question.correct}"]`).classList.add('correct');
+                    }
+                    
+                    // Show explanation
+                    quizExplanation.innerHTML = `<p><strong>Explanation:</strong> ${question.explanation}</p>`;
+                    quizExplanation.classList.add('show');
+                    
+                    // Enable next button
+                    nextQuestionBtn.disabled = false;
+                });
+            });
+        }
+
+        function updateProgress() {
+            document.querySelectorAll('.progress-step').forEach((step, index) => {
+                if (index === currentQuestion) {
+                    step.classList.add('active');
+                } else if (index < currentQuestion) {
+                    step.classList.remove('active');
+                }
+            });
+        }
+
+        function showResults() {
+            // Calculate score
+            score = userAnswers.filter(answer => answer && answer.correct).length;
+            
+            // Hide quiz, show results
+            document.querySelector('#quizQuestionContainer').style.display = 'none';
+            quizExplanation.style.display = 'none';
+            document.querySelector('.quiz-navigation').style.display = 'none';
+            
+            // Determine result message
+            const percentage = (score / quizData.length) * 100;
+            let message, icon, color;
+            
+            if (percentage >= 90) {
+                message = "Excellent! You have strong cybersecurity awareness. You're well-prepared to stay safe online.";
+                icon = "fas fa-shield-alt";
+                color = "var(--secondary-color)";
+            } else if (percentage >= 70) {
+                message = "Good job! You understand the basics of online safety but could learn more about specific threats.";
+                icon = "fas fa-check-circle";
+                color = "var(--primary-color)";
+            } else if (percentage >= 50) {
+                message = "You have some cybersecurity knowledge, but there's significant room for improvement. Review the learning sections.";
+                icon = "fas fa-exclamation-circle";
+                color = "var(--warning-color)";
+            } else {
+                message = "Keep learning! Cybersecurity is important. Review the materials on this site and try the quiz again.";
+                icon = "fas fa-book";
+                color = "var(--danger-color)";
+            }
+            
+            // Show results
+            quizResults.innerHTML = `
+                <div class="score-circle">${score}<span>/${quizData.length}</span></div>
+                <h3>Quiz Completed!</h3>
+                <p>You answered ${score} out of ${quizData.length} questions correctly (${percentage.toFixed(0)}%).</p>
+                <div style="padding: 20px; background: ${color}15; border-radius: var(--border-radius); margin: 20px 0;">
+                    <i class="${icon}" style="font-size: 24px; color: ${color}; margin-bottom: 10px; display: block;"></i>
+                    <p style="color: var(--dark-color);">${message}</p>
+                </div>
+                <button class="cta-button" id="reviewQuizBtn" style="margin-top: 20px;">Review Questions</button>
+            `;
+            quizResults.classList.add('show');
+            
+            // Add event listener to review button
+            document.getElementById('reviewQuizBtn').addEventListener('click', function() {
+                quizResults.classList.remove('show');
+                document.querySelector('#quizQuestionContainer').style.display = 'block';
+                document.querySelector('.quiz-navigation').style.display = 'flex';
+                currentQuestion = 0;
+                loadQuestion();
+                updateProgress();
+            });
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            userAnswers = [];
+            score = 0;
+            
+            // Reset UI
+            quizResults.classList.remove('show');
+            document.querySelector('#quizQuestionContainer').style.display = 'block';
+            document.querySelector('.quiz-navigation').style.display = 'flex';
+            quizExplanation.style.display = 'block';
+            
+            loadQuestion();
+            updateProgress();
+            
+            // Reset progress steps
+            document.querySelectorAll('.progress-step').forEach((step, index) => {
+                step.classList.remove('active');
+                if (index === 0) step.classList.add('active');
+            });
+        }
+
+        // Scenario Functionality
+        function initScenarios() {
+            scenarioActions.forEach(action => {
+                action.addEventListener('click', function() {
+                    const scenarioId = this.getAttribute('data-scenario');
+                    const optionId = this.getAttribute('data-option');
+                    
+                    // Remove selection from all buttons in this scenario
+                    document.querySelectorAll(`.scenario-action[data-scenario="${scenarioId}"]`).forEach(btn => {
+                        btn.classList.remove('selected');
+                    });
+                    
+                    // Mark this button as selected
+                    this.classList.add('selected');
+                    
+                    // Show solution
+                    const solution = document.getElementById(`scenarioSolution${scenarioId}`);
+                    scenarioSolutions.forEach(s => s.classList.remove('show'));
+                    solution.classList.add('show');
+                    
+                    // Scroll solution into view
+                    solution.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                });
+            });
+        }
+
+        // Smooth Scrolling for Navigation Links
+        function initSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Preload images for better performance
+        function preloadImages() {
+            const imageUrls = [
+                'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                'https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                'https://images.unsplash.com/photo-1589578228447-e1a4e481c6c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                'https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                'https://images.unsplash.com/photo-1596524430615-b46475ddff6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                'https://images.unsplash.com/photo-1587560699334-cc4ff634909a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                'https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                'https://images.unsplash.com/photo-1611605698335-8b1569810432?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+            ];
+            
+            imageUrls.forEach(url => {
+                const img = new Image();
+                img.src = url;
+            });
+        }
+    </script>
+</body>
+</html>

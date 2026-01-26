@@ -1,3 +1,2 @@
 # CSOFA
-
-https://zesty-brigadeiros-51dbea.netlify.app/
+https://csofa.netlify.app/
